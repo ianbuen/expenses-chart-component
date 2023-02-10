@@ -34,7 +34,10 @@ export const ExpensesChart = () => {
 
                 <ul>
                     {expenses?.map(({amount, day}, i) =>
-                        <li key={i}><span className={i === (new Date).getDay()-1 ? "cyan" : null} style={setBar(amount)}></span>{day}</li>
+                        <li key={i}>
+                            <span className={i === (new Date()).getDay()-1 ? "cyan" : null} style={setBar(amount)} data-value={`$${amount}`}></span>
+                            {day}
+                        </li>
                     )}
                 </ul>
                 

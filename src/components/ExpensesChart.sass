@@ -5,6 +5,10 @@ $medBrown: hsl(28, 10%, 53%)
 $cream: hsl(27, 66%, 92%)
 $paleOrange:hsl(33, 100%, 98%)
 
+@mixin responsive($width)
+    @media screen and (min-width: $width)
+        @content
+
 *
     // outline: 1px solid #f002
     
@@ -14,17 +18,21 @@ $paleOrange:hsl(33, 100%, 98%)
     grid-auto-rows: max-content
     row-gap: 1rem
     padding: 1rem
-    padding-top: 4rem
-    height: 100%
+    margin-top: 3rem
     width: 100%
-
+    max-width: 500px
+    justify-self: center
+    
     h1
         font-size: 1.5rem
         font-weight: 700   
 
 .balance, .chart
-    padding: 1rem
+    padding: 1.25rem
     border-radius: 10px
+
+    @include responsive(450px)
+        padding: 1.5rem
 
 .balance
     display: grid
@@ -35,7 +43,6 @@ $paleOrange:hsl(33, 100%, 98%)
     font-weight: 400
     font-size: 0.9rem
     height: fit-content
-    padding: 1.25rem
 
     img
         grid-column: 2
@@ -49,18 +56,20 @@ $paleOrange:hsl(33, 100%, 98%)
     display: grid
     grid-template-rows: min-content auto repeat(2, min-content)
     row-gap: 1rem
-    padding: 1.5rem 1rem 0
 
     h1
         color: $darkBrown
         font-size: 1.3rem
         font-weight: bold
+
+        @include responsive(450px)
+            font-size: 1.65rem
         
 
     ul
         display: grid
         grid-auto-flow: column
-        min-height: 30vh
+        height: 30vh
 
         li
             text-align: center
@@ -80,6 +89,28 @@ $paleOrange:hsl(33, 100%, 98%)
                 display: block
                 border-radius: 2px
                 width: 1.75rem
+                position: relative
+
+                &:hover
+                    cursor: pointer
+                    filter: brightness(1.5) hue-rotate(-10deg)
+                    display: flex
+                    justify-content: center
+
+                    &::before
+                        background: black
+                        border-radius: 5px
+                        color: white
+                        content: attr(data-value)
+                        font-size: 0.6rem
+                        padding: 8px 5px
+                        position: absolute
+                        top: -35px
+                        width: fit-content
+
+                @include responsive(400px)
+                    width: 2.5rem
+                    border-radius: 4px
             
                 &.cyan
                     background: $cyan
@@ -107,7 +138,13 @@ $paleOrange:hsl(33, 100%, 98%)
                     font-weight: 700
                     display: block
 
+            @include responsive(450px)
+                font-size: 1rem
+
         h1
             font-size: 1.65rem
             grid-row: 2
             grid-column: 1
+
+            @include responsive(450px)
+                font-size: 2.5rem
