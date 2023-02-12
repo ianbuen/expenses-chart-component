@@ -1,6 +1,8 @@
 .app {
     display: grid;
     height: 100%;
+    grid-auto-rows: min-content;
+    align-content: center;
 }
 
 main {
@@ -9,10 +11,15 @@ main {
 }
 
 footer {
-    width: fit-content;
     justify-self: center;
     font-family: 'DM Sans', sans-serif;
     opacity: 0.8;
     margin: 1rem 0;
     font-size: 0.65rem;
+}
+
+@media screen and (min-width: 450px) {
+    .app {
+        justify-content: center;
+    }
 }

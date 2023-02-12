@@ -9,19 +9,13 @@ $paleOrange:hsl(33, 100%, 98%)
     @media screen and (min-width: $width)
         @content
 
-*
-    // outline: 1px solid #f002
-    
 .view
     font-family: 'DM Sans', sans-serif
     display: grid
     grid-auto-rows: max-content
-    row-gap: 1rem
+    row-gap: 1.5rem
     padding: 1rem
-    margin-top: 3rem
     width: 100%
-    max-width: 500px
-    justify-self: center
     
     h1
         font-size: 1.5rem
@@ -32,7 +26,8 @@ $paleOrange:hsl(33, 100%, 98%)
     border-radius: 10px
 
     @include responsive(450px)
-        padding: 1.5rem
+        padding: 1.75rem 2rem
+        border-radius: 20px
 
 .balance
     display: grid
@@ -55,7 +50,7 @@ $paleOrange:hsl(33, 100%, 98%)
     background: $paleOrange
     display: grid
     grid-template-rows: min-content auto repeat(2, min-content)
-    row-gap: 1rem
+    row-gap: 1.5rem
 
     h1
         color: $darkBrown
@@ -69,7 +64,7 @@ $paleOrange:hsl(33, 100%, 98%)
     ul
         display: grid
         grid-auto-flow: column
-        height: 30vh
+        height: 20vh
 
         li
             text-align: center
@@ -83,6 +78,9 @@ $paleOrange:hsl(33, 100%, 98%)
             font-size: 0.75rem
             color: gray
             row-gap: 0.5rem
+            
+            @include responsive($width: 450px)
+                margin-right: 1rem
 
             span
                 background: $softRed

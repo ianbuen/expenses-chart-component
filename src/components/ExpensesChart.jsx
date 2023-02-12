@@ -33,12 +33,10 @@ export const ExpensesChart = () => {
                 <h1>Spending - Last 7 days</h1>
 
                 <ul>
-                    {expenses?.map(({amount, day}, i) =>
-                        <li key={i}>
-                            <span className={i === (new Date()).getDay()-1 ? "cyan" : null} style={setBar(amount)} data-value={`$${amount}`}></span>
-                            {day}
-                        </li>
-                    )}
+                    {expenses?.map(({amount, day}, i) => {
+                        const weekday = (new Intl.DateTimeFormat("en-US", {weekday: 'short'}).format(new Date())).toLowerCase();
+                        return <li key={i}><span className={day === weekday ? "cyan" : null} style={setBar(amount)} data-value={`$${amount}`}></span>{day}</li>
+                    })}
                 </ul>
                 
                 <div className="details">
